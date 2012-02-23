@@ -1,3 +1,5 @@
+#Read Me
+
 * NOTE 1 (Teaming up): This is a team project. You will work in a team of two persons. If the number of students in your section is an odd number, then there will be one team with three persons. Within the first two days (Monday–Tuesday, February 20–21), you should find your team-mate (you can use the lab time to discuss this) and inform the TA your team members. If you have not teamed up by 5p.m. Tuesday, the TA will randomly assign you a team.
 
 * NOTE 2 (Importance of “team project”): Remember this is a team project. Your team- code should compile and run correctly as a whole to receive credits.
