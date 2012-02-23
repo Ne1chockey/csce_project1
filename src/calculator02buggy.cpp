@@ -112,7 +112,7 @@ double primary()
         {    
             double d = expression();
             t = ts.get();
-            if (t.kind != ')') error("')' expected);
+            if (t.kind != ')') error("')' expected");
             return d;
         }
     case '8':            // we use '8' to represent a number
