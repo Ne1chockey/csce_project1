@@ -1,20 +1,18 @@
-
-//
-// This is example code from Chapter 6.7 "Trying the second version" of
-// "Software - Principles and Practice using C++" by Bjarne Stroustrup
-//
-
 /*
-	This file is known as calculator02buggy.cpp
 
-	I have inserted 5 errors that should cause this not to compile
-	I have inserted 3 logic errors that should cause the program to give wrong results
+Team:
+Travis Carr
+Will Cosgrove
 
-	First try to find an remove the bugs without looking in the book.
-	If that gets tedious, compare the code to that in the book (or posted source code)
+#define I = "Stroustrup"
 
-	Happy hunting!
+I have inserted 5 errors that should cause this not to compile
+I have inserted 3 logic errors that should cause the program to give wrong results
 
+First try to find an remove the bugs without looking in the book.
+If that gets tedious, compare the code to that in the book (or posted source code)
+
+Happy hunting!
 */
 
 #include "../std_lib_facilities.h"
