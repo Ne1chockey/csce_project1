@@ -35,7 +35,7 @@ public:
 class Token_stream {
 public: 
     Token_stream();   // make a Token_stream that reads from cin
-    Token get();      // get a Token (get() is defined elsewhere)
+    get();      // get a Token (get() is defined on line 65)
     void putback(Token t);    // put a Token back
 private:
     bool full;        // is there a Token in the buffer?
