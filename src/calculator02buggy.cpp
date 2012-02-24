@@ -15,7 +15,8 @@ If that gets tedious, compare the code to that in the book (or posted source cod
 Happy hunting!
 */
 
-#include "../std_lib_facilities.h"
+// I remove the ../ here due to our git structure. Put it back if needbe.
+#include "std_lib_facilities.h"
 
 //------------------------------------------------------------------------------
 
