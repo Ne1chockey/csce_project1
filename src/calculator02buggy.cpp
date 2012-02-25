@@ -121,6 +121,10 @@ double term()
                 t = ts.get();
                 break;
             }
+        case '%':
+            {
+                // We need to make a modulo definition here.... 
+            }
         default: 
             ts.putback(t);     // put t back into the token stream
             return left;
