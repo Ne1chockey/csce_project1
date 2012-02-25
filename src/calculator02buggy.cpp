@@ -123,9 +123,10 @@ double term()
             }
         case '%':
             {
-                double d = primary();
+                int d = primary();
+                int l = left;
                 if (d == 0) error("divide by zero");
-                left %= d;
+                l %= d;
                 t = ts.get();
                 break;
             }
