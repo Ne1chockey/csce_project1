@@ -126,7 +126,7 @@ double term()
                 int d = primary();
                 int l = left;
                 if (d == 0) error("divide by zero");
-                l %= d;
+                left = l%d;
                 t = ts.get();
                 break;
             }
