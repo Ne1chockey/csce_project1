@@ -123,7 +123,11 @@ double term()
             }
         case '%':
             {
-                // We need to make a modulo definition here.... 
+                double d = primary();
+                if (d == 0) error("divide by zero");
+                left %= d;
+                t = ts.get();
+                break;
             }
         default: 
             ts.putback(t);     // put t back into the token stream
