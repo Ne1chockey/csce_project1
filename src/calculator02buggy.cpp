@@ -154,6 +154,7 @@ double expression()
 int main()
 try
 {
+    double val;
     while (cin) {
         Token t = ts.get();
 
