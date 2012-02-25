@@ -3,7 +3,7 @@
 
 ###calculator02buggy.cpp:
 - Solved 5 of 5 compilation problems
-- 3 logic errors left
+- 2 logic errors left, 1 partially solved
 
 ###calculator08buggy.cpp
 - ... stuff.
