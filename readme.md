@@ -26,7 +26,7 @@ Turn in one final team-code on CSnet. Put as part of head comment, who worked on
 
 2. (20 points) This part is performed individually. While working on the Ch.6 Drill problem 1, try the following input expression, working the control flow by hand:
 `5 + (6 ∗ 2)/(8 − 3) =`
-Write an individual report on the flow of control showing how the expression is eval- uated (starting from main(), tracing the corresponding function calls) until the final value is output. Type in your report and turn-in a `.txt` file on CSnet.
+Write an individual report on the flow of control showing how the expression is evaluated (starting from main(), tracing the corresponding function calls) until the final value is output. Type in your report and turn-in a `.txt` file on CSnet.
 
 #Part II.
 1. Ch.7 Drill problems on page 250. Download the file in question from [http://www.stroustrup.com/Programming/calculator08buggy.cpp](http://www.stroustrup.com/Programming/calculator08buggy.cpp). Note the following updates to the grammar:
