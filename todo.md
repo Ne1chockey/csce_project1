@@ -1,10 +1,12 @@
 #To Do
-* Come up with things to do
 
 ###calculator02buggy.cpp:
 - Solved 5 of 5 compilation problems
-- 2 logic errors left, 1 partially solved
-	- Line 70 may need a '8' token to cover. I think when we read it our logic was wrong. 
+- 1 logic error left
+
+#####Solved Logic Errors:
+- Modulo operator did not work
+- number '8' was not recognized
 
 ###calculator08buggy.cpp
 - ... stuff.
