@@ -111,8 +111,11 @@ double term()
     while(true) {
         switch (t.kind) {
         case '*':
+            {
             left *= primary();
             t = ts.get();
+            break;
+            }
         case '/':
             {    
                 double d = primary();

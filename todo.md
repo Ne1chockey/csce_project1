@@ -2,11 +2,15 @@
 
 ###calculator02buggy.cpp:
 - Solved 5 of 5 compilation problems
-- 1 logic error left
+#####Solved Compilation Errors
+- Missing Close Quote - Travis
+-
 
+- Solved All Logic Errors
 #####Solved Logic Errors:
-- Modulo operator did not work
-- number '8' was not recognized
+- Modulo operator did not work - Travis
+- number '8' was not recognized - Will
+- Missing Syntax on the * operator to break loop - Travis
 
 ###calculator08buggy.cpp
 - ... stuff.
