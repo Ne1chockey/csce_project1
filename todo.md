@@ -2,7 +2,7 @@
 
 ###calculator02buggy.cpp:
 - Solved 5 of 5 compilation problems
-#####Solved Compilation Errors
+####Solved Compilation Errora
 - Missing Close Quote  #Travis
 
 - Solved All Logic Errors
