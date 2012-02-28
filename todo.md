@@ -1,8 +1,7 @@
 #To Do
 
 ###calculator02buggy.cpp:
-- Solved 5 of 5 compilation problems
-- Testing
+- 3 errors left to document below:
 
 ####Solved Compilation Errora
 - Missing Close Quote  #Travis
@@ -12,6 +11,3 @@
 - Modulo operator did not work #Travis
 - number '8' was not recognized #Will
 - Missing Syntax on the * operator to break loop #Travis
-
-###calculator08buggy.cpp
-- ... stuff.
