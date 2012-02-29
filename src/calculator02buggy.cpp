@@ -62,6 +62,7 @@ Token Token_stream::get(){
 
     switch (ch) {
     case '=':    // for "print"
+    case 'x':    // for "quit"
     case 'X':    // for "quit"
     case '(': case ')': case '+': case '-': case '*': case '/': case '%':
         return Token(ch);        // let each character represent itself
