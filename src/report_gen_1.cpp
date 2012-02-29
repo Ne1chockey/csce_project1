@@ -1,20 +1,3 @@
-/*
-
-Team:
-Travis Carr
-Will Cosgrove
-
-#define I = "Stroustrup"
-
-I have inserted 5 errors that should cause this not to compile
-I have inserted 3 logic errors that should cause the program to give wrong results
-
-First try to find an remove the bugs without looking in the book.
-If that gets tedious, compare the code to that in the book (or posted source code)
-
-Happy hunting!
-*/
-
 // I remove the ../ here due to our git structure. Put it back if needbe.
 #include "std_lib_facilities.h"
 
@@ -45,12 +28,14 @@ Token_stream::Token_stream()
 
 // The putback() member function puts its argument back into the Token_stream's buffer:
 void Token_stream::putback(Token t){
+    cout << "called Token_stream::putback()"<<endl;
     if (full) error("putback() into a full buffer");
     buffer = t;       // copy t to buffer
     full = true;      // buffer is now full
 }
 
 Token Token_stream::get(){
+    cout << "Called Token_stream::get()"<<endl;
     if (full) {       // do we already have a Token ready?
         // remove token from buffer
         full=false;
@@ -64,11 +49,13 @@ Token Token_stream::get(){
     case ';':    // for "print"
     case 'q':    // for "quit"
     case '(': case ')': case '+': case '-': case '*': case '/': case '%':
+        cout << "Found operator, returning it."<<endl;
         return Token(ch);        // let each character represent itself
     case '.':
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
-        {    
+        {
+            cout << "Found number... saving a token of it."<<endl;    
             cin.putback(ch);         // put digit back into the input stream
             double val;
             cin >> val;              // read a floating-point number
@@ -86,18 +73,22 @@ double expression();    // declaration so that primary() can call expression()
 // deal with numbers and parentheses
 double primary()
 {
-    cout << "Entering primary()....." << endl;
+    cout << "Entering primary()....."<<endl;
     Token t = ts.get();
     switch (t.kind) {
     case '(':    // handle '(' expression ')'
-        {    
+        {
+            cout << "Open paren found... looping again. "<<endl;    
             double d = expression();
             t = ts.get();
             if (t.kind != ')') error("')' expected");
             return d;
         }
     case '8':            // we use '8' to represent a number
+        {
+        cout << "No paren found by primary()." << endl;
         return t.value;  // return the number's value
+        }
     default:
         error("primary expected");
     }
@@ -106,7 +97,6 @@ double primary()
 // deal with *, /, and %
 double term()
 {
-    cout << "Entering term()....." << endl;
     double left = primary();
     Token t = ts.get();        // get the next token from token stream
 
@@ -114,12 +104,14 @@ double term()
         switch (t.kind) {
         case '*':
             {
-            left *= primary();
-            t = ts.get();
-            break;
+                cout << "Multiply."<<endl;
+                left *= primary();
+                t = ts.get();
+                break;
             }
         case '/':
             {    
+                cout << "Divide."<<endl;
                 double d = primary();
                 if (d == 0) error("divide by zero");
                 left /= d; 
@@ -128,6 +120,7 @@ double term()
             }
         case '%':
             {
+                cout << "Modulus."<<endl;
                 int d = primary();
                 int l = left;
                 if (d == 0) error("divide by zero");
@@ -145,17 +138,18 @@ double term()
 // deal with + and -
 double expression()
 {
-    cout << "Entering expression()....." << endl;
     double left = term();      // read and evaluate a Term
     Token t = ts.get();        // get the next token from token stream
 
     while(true) {    
         switch(t.kind) {
         case '+':
+            cout << "Plus."<<endl;
             left += term();    // evaluate Term and add
             t = ts.get();
             break;
         case '-':
+            cout << "Minus."<<endl;
             left += term();    // evaluate Term and subtract
             t = ts.get();
             break;
@@ -169,16 +163,13 @@ double expression()
 int main()
 try
 {
-    cout << "Welcome to our simple calculator."<<endl;
-    cout << "Please enter expressions using floating point numbers."<<endl;
-    cout << "Available operators are: '+','-','*','/', and '%'. Enter X to quit." << endl;
-    cout << "Enter '=' when you want to solve your input." << endl;
+    cout << "Entering Main....."<<endl;
     double val;
     while (cin) {
         Token t = ts.get();
 
         if (t.kind == 'x') break; // 'q' for quit
-        if (t.kind == '=')        // ';' for "print now"
+        if (t.kind == ';')        // ';' for "print now"
             cout << "=" << val << '\n';
         else
             ts.putback(t);
