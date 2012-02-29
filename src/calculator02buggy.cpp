@@ -1,18 +1,15 @@
-/*
+wa/*
 
 Team:
 Travis Carr
 Will Cosgrove
 
-#define I = "Stroustrup"
+Fixes:
+Missing Close Quote  #Travis
+Modulo operator did not work #Travis
+number '8' was not recognized #Will
+Missing break; on the * operator function to break loop #Travis
 
-I have inserted 5 errors that should cause this not to compile
-I have inserted 3 logic errors that should cause the program to give wrong results
-
-First try to find an remove the bugs without looking in the book.
-If that gets tedious, compare the code to that in the book (or posted source code)
-
-Happy hunting!
 */
 
 // I remove the ../ here due to our git structure. Put it back if needbe.
