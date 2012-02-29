@@ -59,7 +59,6 @@ Token Token_stream::get(){
 
     char ch;
     cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
-
     switch (ch) {
     case '=':    // for "print"
     case 'x':    // for "quit"
@@ -87,7 +86,6 @@ double expression();    // declaration so that primary() can call expression()
 // deal with numbers and parentheses
 double primary()
 {
-    cout << "Entering primary()....." << endl;
     Token t = ts.get();
     switch (t.kind) {
     case '(':    // handle '(' expression ')'
@@ -107,7 +105,6 @@ double primary()
 // deal with *, /, and %
 double term()
 {
-    cout << "Entering term()....." << endl;
     double left = primary();
     Token t = ts.get();        // get the next token from token stream
 
@@ -146,7 +143,6 @@ double term()
 // deal with + and -
 double expression()
 {
-    cout << "Entering expression()....." << endl;
     double left = term();      // read and evaluate a Term
     Token t = ts.get();        // get the next token from token stream
 
