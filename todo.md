@@ -11,3 +11,11 @@
 - Modulo operator did not work #Travis
 - number '8' was not recognized #Will
 - Missing Syntax on the * operator to break loop #Travis
+
+###calculator08buggy.cpp
+- 3 compile time errors
+- 3 logic errors
+
+####Compile Time Errors
+
+####Logic Errors
