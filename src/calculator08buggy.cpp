@@ -48,14 +48,13 @@ Token Token_stream::get()
 		case '=':
 			return Token(ch);
 		case '.':case '0':case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':
-		case '9':
-		{	cin.unget();
+		case '9': {	
+			cin.unget();
 			double val;
 			cin >> val;
 			return Token(number,val);
 		}
-		default:
-		{
+		default: {
 			if (isalpha(ch)) {
 				string s;
 				s += ch;
@@ -71,8 +70,7 @@ Token Token_stream::get()
 	}
 }
 
-void Token_stream::ignore(char c)
-{
+void Token_stream::ignore(char c){
 	if (full && c==buffer.kind) {
 		full = false;
 		return;
@@ -92,15 +90,13 @@ struct Variable {
 
 vector<Variable> names;	
 
-double get_value(string s)
-{
+double get_value(string s) {
 	for (int i = 0; i<names.size(); ++i)
 		if (names[i].name == s) return names[i].value;
 	error("get: undefined name ",s);
 }
 
-void set_value(string s, double d)
-{
+void set_value(string s, double d){
 	for (int i = 0; i<=names.size(); ++i)
 		if (names[i].name == s) {
 			names[i].value = d;
@@ -109,8 +105,7 @@ void set_value(string s, double d)
 	error("set: undefined name ",s);
 }
 
-bool is_declared(string s)
-{
+bool is_declared(string s){
 	for (int i = 0; i<names.size(); ++i)
 		if (names[i].name == s) return true;
 	return false;
@@ -120,8 +115,7 @@ Token_stream ts;
 
 double expression();
 
-double primary()
-{
+double primary(){
 	Token t = ts.get();
 	switch (t.kind) {
 	case '(':
@@ -140,8 +134,7 @@ double primary()
 	}
 }
 
-double term()
-{
+double term(){
 	double left = primary();
 	while(true) {
 		Token t = ts.get();
@@ -162,8 +155,7 @@ double term()
 	}
 }
 
-double expression()
-{
+double expression(){
 	double left = term();
 	while(true) {
 		Token t = ts.get();
@@ -181,8 +173,7 @@ double expression()
 	}
 }
 
-double declaration()
-{
+double declaration(){
 	Token t = ts.get();
 	if (t.kind != 'a') error ("name expected in declaration");
 	string name = t.name;
@@ -206,16 +197,14 @@ double statement()
 	}
 }
 
-void clean_up_mess()
-{
+void clean_up_mess(){
 	ts.ignore(print);
 }
 
 const string prompt = "> ";
 const string result = "= ";
 
-void calculate()
-{
+void calculate(){
 	while(true) try {
 		cout << prompt;
 		Token t = ts.get();
@@ -230,8 +219,7 @@ void calculate()
 	}
 }
 
-int main()
-{
+int main(){
 	try {
 		calculate();
 		return 0;
