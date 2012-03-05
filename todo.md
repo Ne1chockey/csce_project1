@@ -17,5 +17,8 @@
 - 3 logic errors
 
 ####Compile Time Errors
+- Braces around main()
+- Braces around default: on line 57
+- Parent switch statement missing close brace
 
 ####Logic Errors
