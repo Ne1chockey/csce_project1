@@ -15,6 +15,9 @@ struct Token {
 	string name;
 	Token(char ch) :kind(ch), value(0) { }
 	Token(char ch, double val) :kind(ch), value(val) { }
+	// Not sure if this will work, but worth a try... 
+	// Seems to work
+	Token(char ch, string val) :kind(ch), name(val) { }
 };
 
 class Token_stream {
@@ -71,6 +74,7 @@ Token Token_stream::get()
 		if (isalpha(ch)) {
 			string s;
 			s += ch;
+			//Error on 78 but not sure whats up. Why are we checking for both digits and chars? WTH? Is the + operator already overloaded in std_lib_facilities?
 			while(cin.get(ch) && (isalpha(ch) || isdigit(ch))) s=ch;
 			cin.unget();
 			if (s == "let") return Token(let);	
