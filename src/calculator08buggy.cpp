@@ -7,18 +7,7 @@
 	We have inserted 3 bugs that the compiler will catch and 3 that it won't.
 */
 
-//#include "std_lib_facilities.h"
-#include<iostream>
-#include<fstream>
-#include<sstream>
-#include<cmath>
-#include<cstdlib>
-#include<string>
-#include<list>
-#include<vector>
-#include<algorithm>
-#include<stdexcept>
-
+#include "std_lib_facilities.h"
 using namespace std;
 
 //define token struct
