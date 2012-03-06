@@ -9,6 +9,7 @@
 
 #include "std_lib_facilities.h"
 
+//define token struct
 struct Token {
 	char kind;
 	double value;
@@ -20,24 +21,28 @@ struct Token {
 	Token(char ch, string val) :kind(ch), name(val) { }
 };
 
+//define token_stream class
 class Token_stream {
 	bool full;
 	Token buffer;
 public:
-	Token_stream() :full(0), buffer(0) { }
-
+	Token_stream() :full(0), buffer(0) { 
+        }
 	Token get();
-	void unget(Token t) { buffer=t; full=true; }
-
+	void unget(Token t) { 
+                buffer=t; full=true; 
+        }
 	void ignore(char);
 };
 
+//define constants used for controlling the program
 const char let = 'L';
 const char quit = 'Q';
 const char print = ';';
 const char number = '8';
 const char name = 'a';
 
+//actually define get() function in Token class
 Token Token_stream::get()
 {
 	if (full) { full=false; return buffer; }
