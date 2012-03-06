@@ -1,4 +1,4 @@
-wa/*
+/*
 
 Team:
 Travis Carr
