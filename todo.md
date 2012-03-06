@@ -17,8 +17,9 @@
 - 3 logic errors
 
 ####Compile Time Errors
+- Missing constructor in Token struct
+- Fixed string assignment. = -> += on line 69
 - Braces around main()
 - Braces around default: on line 57
-- Parent switch statement missing close brace
 
 ####Logic Errors

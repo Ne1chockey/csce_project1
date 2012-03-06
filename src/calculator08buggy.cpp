@@ -66,7 +66,7 @@ Token Token_stream::get()
 				s += ch;
 				//Error on 78 but not sure whats up. Why are we checking for both digits and chars? WTH? Is the + operator already overloaded in std_lib_facilities?
 				while(cin.get(ch) && (isalpha(ch) || isdigit(ch))) 
-                                        s=ch;
+                                        s+=ch;
 				cin.unget();
 				if (s == "let") return Token(let);	
 				if (s == "quit") return Token(name);
