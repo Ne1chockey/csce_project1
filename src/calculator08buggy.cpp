@@ -7,7 +7,19 @@
 	We have inserted 3 bugs that the compiler will catch and 3 that it won't.
 */
 
-#include "std_lib_facilities.h"
+//#include "std_lib_facilities.h"
+#include<iostream>
+#include<fstream>
+#include<sstream>
+#include<cmath>
+#include<cstdlib>
+#include<string>
+#include<list>
+#include<vector>
+#include<algorithm>
+#include<stdexcept>
+
+using namespace std;
 
 //define token struct
 struct Token {
@@ -64,7 +76,8 @@ Token Token_stream::get()
 				string s;
 				s += ch;
 				//Error on 78 but not sure whats up. Why are we checking for both digits and chars? WTH? Is the + operator already overloaded in std_lib_facilities?
-				while(cin.get(ch) && (isalpha(ch) || isdigit(ch))) s=ch;
+				while(cin.get(ch) && (isalpha(ch) || isdigit(ch))) 
+                                        s=ch;
 				cin.unget();
 				if (s == "let") return Token(let);	
 				if (s == "quit") return Token(name);
@@ -130,6 +143,10 @@ double primary(){
 	}
 	case '-':
 		return - primary();
+        //not sure how to check if its actually "sqrt" but this *should* be sufficient.
+        //case 's':
+        //:        double d = sqrt(t);
+        // end edits - tmcarr
 	case number:
 		return t.value;
 	case name:
