@@ -43,6 +43,8 @@ const char print = ';';
 const char number = '8';
 const char name = 'a';
 const char root = 'S';
+const char help = 'H';
+const char pows = 'P';
 
 //actually define get() function in Token class
 Token Token_stream::get()
@@ -51,7 +53,7 @@ Token Token_stream::get()
 	char ch;
 	cin >> ch;
 	switch (ch) {
-		case '(':case ')':case '+':case '-':case '*':case '/':case '%':case ';':
+		case '(':case ')':case '+':case '-':case '*':case '/':case '%':case ';':case ',':
 		case '=':
 			return Token(ch);
 		case '.':case '0':case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':
@@ -79,6 +81,8 @@ Token Token_stream::get()
 				// name is not quit.... 	
 				if (s == "quit") return Token(quit);
 				if (s == "sqrt") return Token(root);
+				if (s == "help") return Token(help);
+				if (s == "pow")  return Token(pows);
 				return Token(name,s);
 			}
 			error("Bad token");
@@ -142,6 +146,8 @@ double primary(){
 		}
 		case '-':
 			return - primary();
+
+		// for sqrt
 		case root: {
 			double d = expression();
 			if(d<0)error("cant be negative");
@@ -149,6 +155,22 @@ double primary(){
 				double final = sqrt(d);
 				return final;
 			}
+		}
+		case pows: {
+			t=ts.get();
+	        if (t.kind != '(') error("'(' expected");
+	        double d=expression();
+	        t=ts.get();
+	        if (t.kind!=',') error("',' expected");
+	        double i=expression();
+	        t=ts.get();
+	        if (t.kind != ')') error("')' expected");
+	        return pow(d,i);
+		}
+		case help: {
+			cout << "\nYou are allowed to use +,-,*,/,sqrt(), and pow()\n\n";
+			cout << "Once you are done entering an expression, enter a ';' to execute the expression.\n";
+			cout << "pow() is used in the following syntax: pow(<number to be raised>,<number to raise it to>)\n\n";
 		}
 	    // number = '8'
 		case number:
@@ -252,7 +274,7 @@ void calculate(){
 	}
 }
 
-int main()
+int main(){
 	try {
 		calculate();
 		return 0;
@@ -269,3 +291,4 @@ int main()
 		while (cin>>c && c!=';');
 		return 2;
 	}
+}
