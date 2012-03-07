@@ -42,6 +42,7 @@ const char quit = 'Q';
 const char print = ';';
 const char number = '8';
 const char name = 'a';
+const char root = 'S';
 
 //actually define get() function in Token class
 Token Token_stream::get()
@@ -60,6 +61,13 @@ Token Token_stream::get()
 			cin >> val;
 			return Token(number,val);
 		}
+		case 'k': {
+			cin.unget();
+			char val;
+			cin >> val;
+			return Token(number,1000);
+		}
+
 		default: {
 			if (isalpha(ch)) {
 				string s;
@@ -68,8 +76,10 @@ Token Token_stream::get()
 				while(cin.get(ch) && (isalpha(ch) || isdigit(ch))) 
                                         s+=ch;
 				cin.unget();
-				if (s == "let") return Token(let);	
-				if (s == "quit") return Token(name);
+				if (s == "let") return Token(let);
+				// name is not quit.... 	
+				if (s == "quit") return Token(quit);
+				if (s == "sqrt(") return Token(root);
 				return Token(name,s);
 			}
 			error("Bad token");
@@ -125,10 +135,17 @@ double expression();
 double primary(){
 	Token t = ts.get();
 	switch (t.kind) {
-	case '(':
-	{	double d = expression();
+	case '(': {
+		double d = expression();
 		t = ts.get();
 		if (t.kind != ')') error("'(' expected");
+	}
+	case 'S': {
+		double d = expression();
+		t = ts.get();
+		if (t.kind != ')') error("'(' expected");
+		d = sqrt(d);
+
 	}
 	case '-':
 		return - primary();
@@ -136,10 +153,12 @@ double primary(){
         //case 's':
         //:        double d = sqrt(t);
         // end edits - tmcarr
+    // number = '8'
 	case number:
 		return t.value;
-	case name:
-		return get_value(t.name);
+	// name = 'a'
+	//case name:
+		//return get_value(t.name);
 	default:
 		error("primary expected");
 	}
@@ -219,7 +238,12 @@ void calculate(){
 	while(true) try {
 		cout << prompt;
 		Token t = ts.get();
+
+
+
+		// print = ';'
 		while (t.kind == print) t=ts.get();
+		// quit = 'Q'
 		if (t.kind == quit) return;
 		ts.unget(t);
 		cout << result << statement() << endl;
