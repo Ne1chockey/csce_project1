@@ -137,7 +137,8 @@ double primary(){
 		case '(': {
 			double d = expression();
 			t = ts.get();
-			if (t.kind != ')') error("'(' expected");
+			if (t.kind != ')') error("')' expected");
+			return d;
 		}
 		case '-':
 			return - primary();
