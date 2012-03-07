@@ -67,7 +67,6 @@ Token Token_stream::get()
 			cin >> val;
 			return Token(number,1000);
 		}
-
 		default: {
 			if (isalpha(ch)) {
 				string s;
@@ -79,7 +78,7 @@ Token Token_stream::get()
 				if (s == "let") return Token(let);
 				// name is not quit.... 	
 				if (s == "quit") return Token(quit);
-				if (s == "sqrt(") return Token(root);
+				if (s == "sqrt") return Token(root);
 				return Token(name,s);
 			}
 			error("Bad token");
@@ -114,7 +113,7 @@ double get_value(string s) {
 }
 
 void set_value(string s, double d){
-	for (int i = 0; i<=names.size(); ++i)
+	for (int i = 0; i<names.size(); ++i)
 		if (names[i].name == s) {
 			names[i].value = d;
 			return;
@@ -135,32 +134,31 @@ double expression();
 double primary(){
 	Token t = ts.get();
 	switch (t.kind) {
-	case '(': {
-		double d = expression();
-		t = ts.get();
-		if (t.kind != ')') error("'(' expected");
-	}
-	case 'S': {
-		double d = expression();
-		t = ts.get();
-		if (t.kind != ')') error("'(' expected");
-		d = sqrt(d);
-
-	}
-	case '-':
-		return - primary();
-        //not sure how to check if its actually "sqrt" but this *should* be sufficient.
-        //case 's':
-        //:        double d = sqrt(t);
-        // end edits - tmcarr
-    // number = '8'
-	case number:
-		return t.value;
-	// name = 'a'
-	//case name:
-		//return get_value(t.name);
-	default:
-		error("primary expected");
+		case '(': {
+			double d = expression();
+			t = ts.get();
+			if (t.kind != ')') error("'(' expected");
+		}
+		case '-':
+			return - primary();
+		case root: {
+			double d = expression();
+			if(d<0)error("cant be negative");
+			else{
+				double final = sqrt(d);
+				return final;
+			}
+		}
+	    // number = '8'
+		case number:
+			return t.value;
+		// name = 'a'
+		case name:
+			return get_value(t.name);
+		case '=':
+			return primary();
+		default:
+			error("primary expected");
 	}
 }
 
@@ -215,8 +213,7 @@ double declaration(){
 	return d;
 }
 
-double statement()
-{
+double statement(){
 	Token t = ts.get();
 	switch(t.kind) {
 	case let:
@@ -254,7 +251,7 @@ void calculate(){
 	}
 }
 
-int main(){
+int main()
 	try {
 		calculate();
 		return 0;
@@ -271,4 +268,3 @@ int main(){
 		while (cin>>c && c!=';');
 		return 2;
 	}
-}

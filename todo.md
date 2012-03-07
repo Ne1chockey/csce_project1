@@ -18,8 +18,10 @@
 
 ####Compile Time Errors
 - Missing constructor in Token struct
-- Fixed string assignment. = -> += on line 69
-- Braces around main()
-- Braces around default: on line 57
+- Fixed string assignment. = -> += on line 69b
+- 
 
 ####Logic Errors
+- line 80, needed to return quit instead of name
+- line 116 change <= to <
+- 
